@@ -28,8 +28,8 @@ pipeline {
         branch "master"
       }
       steps {
-        sh 'oc login -u testuser -p redhat123 --insecure-skip-tls-verify https://kubernetes.default.svc:443'
-        sh 'oc new-project test-testuser || true'
+        sh 'oc login -u pachu -p Boca1905 --insecure-skip-tls-verify'
+        sh 'oc new-project test-pachu || true'
       }
     }
   }
