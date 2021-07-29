@@ -9,18 +9,12 @@ pipeline {
       }
     }
     stage ('Apply resources') {
-      when {
-	branch "master"
-      }
       steps {
         sh "oc apply -k config"
 	sh "./wait_oauth.sh"
       }
     }
     stage ('Verify test user') {
-      when {
-        branch "master"
-      }
       steps {
         sh 'oc login -u pachu -p Boca1905 --insecure-skip-tls-verify'
         sh 'oc new-project test-pachu || true'
