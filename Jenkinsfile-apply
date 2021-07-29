@@ -1,10 +1,4 @@
-pipeline {
-  triggers {
-    pollSCM("H/3 * * * *")
-  }
-  options {
-    disableConcurrentBuilds()
-  }
+pipeline {			
   agent {
     label "nodejs"
   }
