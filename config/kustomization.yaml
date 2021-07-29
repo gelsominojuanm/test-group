@@ -3,7 +3,7 @@ resources:
 - project-leaders.yaml
 - self-provisioners.yaml
 secretGenerator:
-- name: htpasswd-secret
+- name: htpass-secret
   namespace: openshift-config
   files:
   - htpasswd=htpasswd
