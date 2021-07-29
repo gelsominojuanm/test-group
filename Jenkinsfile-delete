@@ -1,0 +1,23 @@
+pipeline {			
+  agent {
+    label "nodejs"
+  }
+  stages {
+    stage ('Validate configuration resources') {
+      steps {
+        sh "oc apply --dry-run --validate -k config"
+      }
+    }
+    stage ('Apply resources') {
+      steps {
+        sh "oc apply -k config"
+	sh "./wait_oauth.sh"
+      }
+    }
+    stage ('Verify test user') {
+      steps {
+        sh 'oc login -u marcos -p 1234 --insecure-skip-tls-verify https://api.crc.testing:6443 ||| false'
+      }
+    }
+  }
+}
