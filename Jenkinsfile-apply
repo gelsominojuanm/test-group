@@ -16,7 +16,7 @@ pipeline {
     }
     stage ('Verify test user') {
       steps {
-        sh 'oc login -u pachu -p Boca1905 --insecure-skip-tls-verify'
+        sh 'oc login -u pachu -p 12345 --insecure-skip-tls-verify https://api.crc.testing:6443'
         sh 'oc new-project test-pachu || true'
       }
     }
